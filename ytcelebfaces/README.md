@@ -1,12 +1,18 @@
 # Youtube Celebrities Faces Experiment
 
+## Download the dataset
+
+A page describing this dataset is located at <http://seqamlab.com/youtube-celebrities-face-tracking-and-recognition-dataset/>. Here's a [link to the dataset archive](http://seqamlab.com/wp-content/uploads/Data/ytcelebrity.tar). It is about 900 MB. Download it and unpack somewhere.
+
+This code requires at least (approximately) 12 GB of RAM+SWAP and 5 GB of videocard memory.
+
 ## Prepare Python environment
 
 We recommend setting up Python environment for this experiment in Linux, because we used Linux. You need python 3. There are two ways to set up the environment. After any of those you will need to install one more library.
 
 ### First way
 
-Open <conda_requirements.txt>. The first lines of that file tell you how to quickly set up an environment suitable for reproducing this. If some packages fail to install, you will need to install them manually from pip or from other sources.
+Open <conda_requirements.txt>. The first lines of that file tell you how to quickly set up an environment suitable for reproducing this. If some packages fail to install, you might need to install them manually from pip or from other sources.
 
 ### The second way
 
@@ -20,6 +26,7 @@ Install (using your favorite package manager):
 * scikit-learn (also used only for some utility functions)
 * imageio and imageio-ffmpeg
 * pytorch
+* ignite
 
 ### One more library
 
@@ -46,3 +53,11 @@ $ git diff
 # finally install the library
 $ pip install .
 ```
+
+## Running the experiment notebook
+
+1. Open <ytcelebrities_for_public.ipynb>. Replace find `"cuda:0"` in it and, if needed, replace with your desired videocard.
+2. Find assignment of `data_path` variable and change it to path where your dataset is stored. It must be the directory which contains all the video files, and there must be no other files.
+3. Find assignment of `SAVE_DIR` and set it to a directory where you want the models and training history to be saved.
+4. Find `HOW_FAST` variable assignment. For performing the actual experiment we did, change its value to `"medium"` as written in a comment near its assignment. If you want to quickly make sure all the code works, set it to `"fast"`.
+5. Press "Run all cells" in jupyter notebook.
