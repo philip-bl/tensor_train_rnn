@@ -1,6 +1,5 @@
 import random
 from collections import defaultdict, OrderedDict
-
 # from config import GLOBAL_MAX_LEN, N_LABELS
 from time import time
 import random
@@ -25,12 +24,12 @@ from keras.utils.np_utils import to_categorical
 import tensorflow as tf
 from third_parties.TT_RNN.TTRNN import TT_GRU, TT_LSTM
 import argparse
-
+from deepsbd.dataloader import ShotDataset
 
 parser = argparse.ArgumentParser(description='DeepSBD experiment argument parser.')
 parser.add_argument('--weights_path', required=True, help='Path to weights to be test.')
 parser.add_argument('--rnn_layer', default='lstm', choices=['lstm', 'gru'], help='Type of RNN unit. Can be either lstm or gru.')
-parser.add_argument('--use_TT', action='store_constant', default=False, const=True, dest='use_TT', help='Flag to use TT-decomposition of rnn weights.')
+parser.add_argument('--use_TT', action='store_const', default=False, const=True, dest='use_TT', help='Flag to use TT-decomposition of rnn weights.')
 parser.add_argument('--data_path', type=str, help='DeepSBD dataset root.')
 parser.add_argument('--labels_path', type=str, help='DeepSBD train labels path.')
 parser.add_argument('--lr', default=1e-3, type=float, help='Learning rate value.')
@@ -106,8 +105,10 @@ def main(args):
     _Y_pred = np.vstack(tuple(_Y_pred)).argmax(axis=1)
     _Y_test = np.vstack(tuple(_Y_test)).argmax(axis=1)
     print(_Y_pred.shape)
-    print(precision_recall_fscore_support(_Y_test, _Y_pred))
-
+    res = (precision_recall_fscore_support(_Y_test, _Y_pred))
+    for k, tp in enumerate(['precision', 'recall', 'f1-score']):
+        for i in range(3):
+            print(tp, 'class %s:' % i, res[k][i])
 
 if __name__ == '__main__':
     main(args)

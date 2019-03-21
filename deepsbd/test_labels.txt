@@ -1,9 +1,9 @@
-examples/graduals/000067
-examples/graduals/000261
-examples/graduals/000276
-examples/segments/000889
-examples/graduals/003444
-examples/graduals/004075
-examples/sharps/000056
-examples/sharps/000063
-examples/sharps/000127
+graduals/000067 0 1
+graduals/000261 0 1
+graduals/000276 0 1
+segments/000889 0 0
+segments/003444 0 0
+segments/004075 0 0
+sharps/000056 0 2
+sharps/000063 0 2
+sharps/000127 0 2
