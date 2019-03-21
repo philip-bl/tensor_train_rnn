@@ -1,8 +1,10 @@
 # Tensor Train Decomposition for Recurrent Neural Networks
 
+This was supposed to be a replication of [Tensor Train Recurrent Neural Networks for Video Classification](https://arxiv.org/abs/1707.01786). See [report.pdf](report.pdf) for description of what we've done.
+
 ## Experiments
 
-Different experiments use different libraries, so please read about each of them separately. You might even need to make different python environments for them.
+Different experiments were performed by different people and use different libraries, so please read about each of them separately. You might even need to make different python environments for them.
 
 ### SVHN Dataset
 You can find a script with the experiment in [tt_svhn.py](tt_svhn.py).

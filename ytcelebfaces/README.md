@@ -1,5 +1,7 @@
 # Youtube Celebrities Faces Experiment
 
+This experiment was performed by [Philip Blagoveschensky](https://github.com/philip-bl).
+
 ## Download the dataset
 
 A page describing this dataset is located at <http://seqamlab.com/youtube-celebrities-face-tracking-and-recognition-dataset/>. Here's a [link to the dataset archive](http://seqamlab.com/wp-content/uploads/Data/ytcelebrity.tar). It is about 900 MB. Download it and unpack somewhere.
@@ -12,7 +14,7 @@ We recommend setting up Python environment for this experiment in Linux, because
 
 ### First way
 
-Open <conda_requirements.txt>. The first lines of that file tell you how to quickly set up an environment suitable for reproducing this. If some packages fail to install, you might need to install them manually from pip or from other sources.
+Open [conda_requirements.txt](conda_requirements.txt). The first lines of that file tell you how to quickly set up an environment suitable for reproducing this. If some packages fail to install, you might need to install them manually from pip or from other sources.
 
 ### The second way
 
@@ -56,7 +58,7 @@ $ pip install .
 
 ## Running the experiment notebook
 
-1. Open <ytcelebrities_for_public.ipynb>. Replace find `"cuda:0"` in it and, if needed, replace with your desired videocard.
+1. Open [ytcelebrities_for_public.ipynb](ytcelebrities_for_public.ipynb). Find `"cuda:0"` in it and, if needed, replace with your desired videocard.
 2. Find assignment of `data_path` variable and change it to path where your dataset is stored. It must be the directory which contains all the video files, and there must be no other files.
 3. Find assignment of `SAVE_DIR` and set it to a directory where you want the models and training history to be saved.
 4. Find `HOW_FAST` variable assignment. For performing the actual experiment we did, change its value to `"medium"` as written in a comment near its assignment. If you want to quickly make sure all the code works, set it to `"fast"`.
