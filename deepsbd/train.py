@@ -49,15 +49,6 @@ def main(args):
 
     np.random.seed(11111986)
 
-    data_path = '/mnt/ttrnn/Hollywood2/scaled_clips/AVIClips'
-    train_labels = '/mnt/ttrnn/Hollywood2/train_labels.txt'
-    test_labels = '/mnt/ttrnn/Hollywood2/test_labels.txt'
-
-
-    data_path = "/media/tva/721af2a0-5850-411f-b27a-515f87736c71/vic/projects/moana/data/DeepSBD"
-    train_list_path = "/media/tva/721af2a0-5850-411f-b27a-515f87736c71/vic/projects/moana/new_train_list.txt"
-    test_list_path = "/media/tva/721af2a0-5850-411f-b27a-515f87736c71/vic/projects/moana/new_test_list.txt"
-
     alpha = 1e-2
     # decomposition is fixed for DeepSBD dataset
     tt_input_shape = [10, 18, 13, 30]
