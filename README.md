@@ -6,4 +6,4 @@ Different experiments use different libraries, so please read about each of them
 
 ### Youtube Celebrities Faces
 
-You can find everything related to this experiment in [/ytcelebfaces]. In particular, read [/ytcelebfaces/README.md] to learn what libraries you need to install and how to download the dataset.
+You can find everything related to this experiment in [ytcelebfaces](ytcelebfaces). In particular, read [ytcelebfaces/README.md](ytcelebfaces/README.md) to learn what libraries you need to install and how to download the dataset.
