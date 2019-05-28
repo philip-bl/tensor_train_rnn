@@ -390,7 +390,7 @@ def main(
     files = files[:N]
     targets = targets[:N]
     y = y[:N]
-    full_paths = np.array([dataset_root + this_file for this_file in files])
+    full_paths = np.array([os.path.join(dataset_root, this_file) for this_file in files])
     X = load_data_v2(full_paths, resizing_size=resizing_size, maxlen=global_max_len, shuffle_pixels=shuffle_components)
     X_train = X[:NUM_TRAIN]
     X_test = X[NUM_TRAIN:]
