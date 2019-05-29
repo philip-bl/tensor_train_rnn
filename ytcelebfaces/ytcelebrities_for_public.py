@@ -343,11 +343,12 @@ def do_every_num_epochs(num_epochs):
 @click.option("--how-fast", type=click.Choice(("slow", "medium", "fast")), default="medium")
 @click.option("--long-seq/--no-long-seq", default=False)
 @click.option("--num-epochs", type=int, required=True)
+@click.option("--learning-rate", type=float, required=True)
 @click_log.simple_verbosity_option(logger)
 @click_seed_and_device_options()
 def main(
     seed: int, device, shuffle_components: bool, how_fast: str, long_seq: False,
-    dataset_root: str, output_dir: str, num_epochs: int
+    dataset_root: str, output_dir: str, num_epochs: int, learning_rate: float
 ):
     resizing_size = {
         "slow": (160, 120),
@@ -424,7 +425,6 @@ def main(
         dropout_prob=dropout_prob,
         updated_hidden_state_activation_maker=torch.nn.ELU
     ).to(device)
-    learning_rate = 3e-4
     optimizer = torch.optim.Adam(
         model.parameters(),
         lr=learning_rate, weight_decay=1e-2, amsgrad=True
