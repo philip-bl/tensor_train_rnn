@@ -405,7 +405,7 @@ def main(
     num_labels = len(classes)
     dataset_train = NumpyArrayDataset(X_train, y_train)
     dataset_test = NumpyArrayDataset(X_test, y_test)
-    BATCH_SIZE = {"fast": 32, "medium": 32, "slow": 8}[how_fast]
+    BATCH_SIZE = {"fast": 32, "medium": 64, "slow": 8}[how_fast]
     train_loader = DataLoader(
         dataset_train, batch_size=min(BATCH_SIZE, NUM_TRAIN), shuffle=True, drop_last=True,
         num_workers=1, pin_memory=True
@@ -424,7 +424,7 @@ def main(
         dropout_prob=dropout_prob,
         updated_hidden_state_activation_maker=torch.nn.ELU
     ).to(device)
-    learning_rate = 1e-3
+    learning_rate = 3e-4
     optimizer = torch.optim.Adam(
         model.parameters(),
         lr=learning_rate, weight_decay=1e-2, amsgrad=True
