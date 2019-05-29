@@ -392,6 +392,7 @@ def main(
     y = y[:N]
     full_paths = np.array([os.path.join(dataset_root, this_file) for this_file in files])
     X = load_data_v2(full_paths, resizing_size=resizing_size, maxlen=global_max_len, shuffle_pixels=shuffle_components)
+    np.savez(os.path.join(output_dir, "Xy.npz"), X, y)
     X_train = X[:NUM_TRAIN]
     X_test = X[NUM_TRAIN:]
 
@@ -423,9 +424,10 @@ def main(
         dropout_prob=dropout_prob,
         updated_hidden_state_activation_maker=torch.nn.ELU
     ).to(device)
+    learning_rate = 1e-3
     optimizer = torch.optim.Adam(
         model.parameters(),
-        lr=1e-5, weight_decay=1e-2, amsgrad=True
+        lr=learning_rate, weight_decay=1e-2, amsgrad=True
     )
     criterion = tnnf.cross_entropy
     train_and_evaluate(
@@ -438,7 +440,7 @@ def main(
         num_epochs=num_epochs,
         early_stopping_epochs=100,
         save_dir=output_dir,
-        save_prefix=f"tt_gru_activation_elu_adam_seed_{seed}_{how_fast}_dropout_prob_{dropout_prob}_rank_{tt_rank}_shuffle={shuffle_components}",
+        save_prefix=f"tt_gru_activation_elu_adam_seed_{seed}_{how_fast}_dropout_prob_{dropout_prob}_rank_{tt_rank}_lr={learning_rate:.1E}_shuffle={shuffle_components}",
         criterion=criterion, device=device, output_dir=output_dir
     )
 
